@@ -8,8 +8,10 @@
 #ifndef DPSCPP_IMPULSERESPONSE_HPP_
 #define DPSCPP_IMPULSERESPONSE_HPP_
 
+class ImpulseResponse
+{
 
-
+};
 
 
 #endif /* DPSCPP_IMPULSERESPONSE_HPP_ */
