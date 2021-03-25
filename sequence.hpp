@@ -1,0 +1,8 @@
+#ifndef DPSCPP_SEQUENCE_HPP_
+#define DPSCPP_SEQUENCE_HPP_
+
+
+
+
+
+#endif /* DPSCPP_SEQUENCE_HPP_ */
