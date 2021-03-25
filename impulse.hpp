@@ -5,7 +5,7 @@
 class impulse : public signal
 {
 	public:
-		double	get(long long int n);
+		std::complex<double>	get(long long int n);
 
 };
 

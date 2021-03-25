@@ -7,16 +7,16 @@ signal::~signal()
 {
 
 }
-double	signal::get(long long int n)
+std::complex<double>	signal::get(long long int n)
 {
 	return 0;
 }
-std::vector<double> signal::getSequence(long long int begin, long long int end)
+std::vector<std::complex<double>> signal::getSequence(long long int begin, long long int end)
 {
-	std::vector<double> sequence;
+	std::vector<std::complex<double>> sequence;
 
 	for(long long int i=begin; i<=end;i++)
-		sequence.push_back((double)(this->get(i)));
+		sequence.push_back((std::complex<double>)(this->get(i)));
 
 	return sequence;
 }

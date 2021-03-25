@@ -8,7 +8,7 @@ int main ()
 	step degrau;
 	impulse impulso;
 	signal *sinalDegrau=&degrau,*sinalImpulso= &impulso;
-	std::vector<double> sequenceDegrau,sequenceImpulso, sequenceSinalDegrau, sequenceSinalImpulso;
+	std::vector<std::complex<double>> sequenceDegrau,sequenceImpulso, sequenceSinalDegrau, sequenceSinalImpulso;
 
 
 	sequenceDegrau = degrau.getSequence(-10, 10);
