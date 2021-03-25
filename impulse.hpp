@@ -1,6 +1,13 @@
 #ifndef DPSCPP_IMPULSE_HPP_
 #define DPSCPP_IMPULSE_HPP_
+#include "signal.hpp"
 
+class impulse : public signal
+{
+	public:
+		double	get(long long int n);
+
+};
 
 
 
