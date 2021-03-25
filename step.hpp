@@ -5,7 +5,7 @@
 class step : public signal
 {
 	public:
-	std::complex<double> get(long long int n);
+		std::complex<double> get(long long int n);
 };
 
 

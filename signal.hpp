@@ -7,9 +7,9 @@ class signal
 
 	public:
 		signal();
-	virtual	~signal();
-	virtual std::complex<double>	get(long long int n);
-	std::vector< std::complex<double> > getSequence(long long int begin, long long int end);
+		virtual	~signal();
+		virtual std::complex<double>	get(long long int n);
+		std::vector< std::complex<double> > getSequence(long long int begin, long long int end);
 
 };
 
