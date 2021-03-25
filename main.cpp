@@ -18,7 +18,7 @@ int main ()
 	signal *sinalDegrau=&degrau,*sinalImpulso= &impulso,*sinalCossenoide=&cossenoide,*sinalExponencial=&exponencial;
 	std::vector<std::complex<double>> sequenceSinalDegrau, sequenceSinalImpulso,sequenceSinalCossenoide, sequenceSinalExponencial;
 
-	sequenceSinalDegrau = sinalDegrau->getSequence(begin, end);
+	sequenceSinalDegrau = (*sinalDegrau).getSequence(begin, end);
 	sequenceSinalImpulso = sinalImpulso->getSequence(begin, end);
 	sequenceSinalCossenoide = sinalCossenoide->getSequence(begin, end);
 	sequenceSinalExponencial = sinalExponencial->getSequence(begin, end);

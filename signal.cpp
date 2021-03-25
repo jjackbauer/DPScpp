@@ -3,6 +3,22 @@ signal::signal()
 {
 
 }
+signal::signal(const signal &toCopy) noexcept
+{
+
+}
+signal& signal::operator=(const signal &toCopy) noexcept
+{
+	return *this;
+}
+signal::signal(signal &&toMove) noexcept
+{
+
+}
+signal& signal::operator=(signal&&toMove) noexcept
+{
+	return *this;
+}
 signal::~signal()
 {
 
