@@ -4,21 +4,21 @@
 class delay : public signal
 {
 	public:
-		delay(long long int delay,signal x);
-		delay(const delay &toCopy) noexcept;
-		delay& operator=(const delay &toCopy) noexcept;
+		delay(long long int delay,signal *x);
+		delay(delay &toCopy) noexcept;
+		delay& operator=(delay &toCopy) noexcept;
 		delay(delay &&toMove) noexcept;
 		delay& operator=(delay &&toMove) noexcept;
 		~delay();
 		long long int getDelay() const;
 		void setDelay(long long int delay);
-		const signal& getX() const;
-		void setX(const signal &x);
+		signal* getX();
+		void setX( signal *x);
 		std::complex<double> get(long long int n);
 
 	private:
 		long long int k;
-		signal x;
+		 signal *x;
 };
 
 

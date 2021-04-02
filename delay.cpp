@@ -1,14 +1,13 @@
 #include "delay.hpp"
-delay::delay(long long int k,signal x)
+delay::delay(long long int k,signal *x)
 {
 	setDelay(k);
 	setX(x);
 }
-delay::delay(const delay &toCopy) noexcept : k{toCopy.getDelay()}, x{toCopy.getX()}
+delay::delay(delay &toCopy) noexcept : k{toCopy.getDelay()},x{toCopy.getX()}
 {
-
 }
-delay& delay::operator=(const delay &toCopy) noexcept
+delay& delay::operator=(delay &toCopy) noexcept
 {
 	setDelay(toCopy.getDelay());
 	setX(toCopy.getX());
@@ -30,7 +29,7 @@ delay::~delay()
 }
 std::complex<double> delay::get(long long int n)
 {
-	return this->signal::get(n-getDelay());
+	return x->get(n-getDelay());
 }
 long long int delay::getDelay() const {
 	return k;
@@ -40,10 +39,11 @@ void delay::setDelay(long long int k) {
 	this->k = k;
 }
 
-const signal& delay::getX() const {
+signal* delay::getX()
+{
 	return x;
 }
-
-void delay::setX(const signal &x) {
+void delay::setX( signal *x)
+{
 	this->x = x;
 }

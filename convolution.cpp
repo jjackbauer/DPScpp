@@ -1,19 +1,25 @@
 #include "convolution.hpp"
-convolution::convolution(long long int k,signal &x, signal &h)
+convolution::convolution(long long int k,signal *x, signal *h)
 {
 	setK(k);
-	setX(x);
-	setH(h);
+	sequence auxX(-k,k,x),auxH(-k,k,h);
+	setX(auxX);
+	setH(auxH);
+	/*std::cout<<"AuxX-Size: "<<auxX.getS().size()<<std::endl;
+	std::cout<<"AuxH-Size: "<<auxH.getS().size()<<std::endl;
+	std::cout<<"x-Size: "<<this->x.getS().size()<<std::endl;
+	std::cout<<"h-Size: "<<this->h.getS().size()<<std::endl;//*/
+
 }
 convolution::~convolution()
 {
 
 }
-convolution::convolution(const convolution &toCopy) noexcept : k{toCopy.getK()}, x{toCopy.getX()}, h{toCopy.getH()}
+convolution::convolution(convolution &toCopy) noexcept : k{toCopy.getK()}, x{toCopy.getX()}, h{toCopy.getH()}
 {
 
 }
-convolution& convolution::operator=(const convolution &toCopy) noexcept
+convolution& convolution::operator=(convolution &toCopy) noexcept
 {
 	setK(toCopy.getK());
 	setX(toCopy.getX());
@@ -33,23 +39,21 @@ convolution& convolution::operator=(convolution &&toMove) noexcept
 }
 std::complex<double> convolution::get(long long int n)
 {
+	//std::cout<<"GET 1"<<std::endl;
 	std::complex<double> value(0,0);
-
-	for(long long int i=-k;i<=k;k++)
-		value+=x.get(k)*h.get(n-k);
+	//std::cout<<"GET 2"<<std::endl;
+	for(long long int i=-k;i<=k;i++)
+	{
+		/*std::cout<<"Value"<<value<<std::endl;
+		std::cout<<"i"<<i<<std::endl;
+		std::cout<<"x[i]"<<x.get(i)<<std::endl;
+		std::cout<<"h[n-i]"<<h.get(n-i)<<std::endl;//*/
+		value+=(x.get(i))*(h.get(n-i));
+	}
+	//std::cout<<"GET 3"<<std::endl;
 
 	return value;
 }
-const signal& convolution::getH() const
-{
-	return h;
-}
-
-void convolution::setH(const signal &h)
-{
-	this->h = h;
-}
-
 long long int convolution::getK() const
 {
 	return k;
@@ -60,12 +64,18 @@ void convolution::setK(long long int k)
 	this->k = k;
 }
 
-const signal& convolution::getX() const
-{
+const sequence& convolution::getH() const {
+	return h;
+}
+
+void convolution::setH(const sequence &h) {
+	this->h = h;
+}
+
+const sequence& convolution::getX() const {
 	return x;
 }
 
-void convolution::setX(const signal &x)
-{
+void convolution::setX(const sequence &x) {
 	this->x = x;
 }
