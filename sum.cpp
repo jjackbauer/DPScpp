@@ -4,21 +4,21 @@ sum::sum(signal *x, signal *y)
 	setX(x);
 	setY(y);
 }
-sum::sum(sum &toCopy) : x{toCopy.getX()}, y{toCopy.getY()}
+sum::sum(sum &toCopy) noexcept : x{toCopy.getX()}, y{toCopy.getY()}
 {
 
 }
-sum& sum::operator=(sum &toCopy)
+sum& sum::operator=(sum &toCopy) noexcept
 {
 	this->setX(toCopy.getX());
 	this->setY(toCopy.getY());
 	return *this;
 }
-sum::sum(sum &&toMove) : x{std::move(toMove.getX())}, y{std::move(toMove.getY())}
+sum::sum(sum &&toMove) noexcept : x{std::move(toMove.getX())}, y{std::move(toMove.getY())}
 {
 
 }
-sum& sum::operator=(sum &&toMove)
+sum& sum::operator=(sum &&toMove) noexcept
 {
 	setX(std::move(toMove.getX()));
 	setY(std::move(toMove.getY()));
