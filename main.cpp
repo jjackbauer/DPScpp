@@ -96,14 +96,15 @@ void question3A()
 	powerSeries p(2.0,0.9);
 	noise n(1.0,-0.5);
 	sum x(&p,&n);
+	sequence xt(0,40,&x);
 	std::vector<std::complex<double>> seq;
-	seq = x.getSequence(0,4*end);
+	seq = xt.getSequence(0,4*end);
 	print(seq);
 
 	for(int m=2; m<10; m++)
 	{
 		std::cout<<"M : "<<m<<std::endl;
-		movingAverage y(m,&x);
+		movingAverage y(m,&xt);
 		seq = y.getSequence(0,4*end);
 		print(seq);
 	}
