@@ -5,7 +5,7 @@
 class differenceEquation : public signal
 {
 	public:
-	differenceEquation(std::vector<std::complex<double>> a,std::vector<std::complex<double>> b,std::vector<std::complex<double>> x,std::vector<std::complex<double>> y);
+	differenceEquation(std::vector<std::complex<double>> a,std::vector<std::complex<double>> b);
 	differenceEquation(differenceEquation &toCopy) noexcept;
 	differenceEquation& operator=(differenceEquation &toCopy) noexcept;
 	differenceEquation(differenceEquation &&toMove) noexcept;

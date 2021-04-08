@@ -1,5 +1,5 @@
 #include "differenceEquation.hpp"
-differenceEquation::differenceEquation(std::vector<std::complex<double>> a,std::vector<std::complex<double>> b,std::vector<std::complex<double>> x,std::vector<std::complex<double>> y)
+differenceEquation::differenceEquation(std::vector<std::complex<double>> a,std::vector<std::complex<double>> b)
 {
 
 	setA(a);
