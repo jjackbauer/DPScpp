@@ -188,10 +188,43 @@ void project01()
 
 void p2_question1A()
 {
-
+	std::cout<<"Question 1A"<<std::endl;
+	std::vector<std::complex<double>> seq;
+	cosine s1(0.05,0),s2(0.47,0);
+	sum y(&s1,&s2);
+	sequence yt(0,100,&y);
+	seq = yt.getSequence(0, 100);
+	std::cout<<"Unfiltered Signal"<<std::endl;
+	print(seq);
+	movingAverage f(2,&yt);
+	seq = f.getSequence(0, 100);
+	std::cout<<"Filtered Signal"<<std::endl;
+	print(seq);
 }
 void p2_question1B()
 {
+	std::cout<<"Question 1B"<<std::endl;
+	std::vector<std::complex<double>> seq;
+	cosine s1(0.05,0),s2(0.47,0);
+	sum y(&s1,&s2);
+	sequence yt(0,100,&y);
+	seq = yt.getSequence(0, 100);
+	std::cout<<"Unfiltered Signal"<<std::endl;
+	print(seq);
+	std::vector<std::complex<double>> a, b;
+	//vector a
+	a.push_back(1.0);
+	//vector b
+	b.push_back(0.5);
+	b.push_back(-0.5);
+	differenceEquation h(a,b);
+	h.impulse(100);
+	std::cout<<"Filter Impulse Response"<<std::endl;
+	print(h.getSequence(0, 100));
+	convolution s(100,&yt,&h);
+	std::cout<<"Signal Filtered"<<std::endl;
+	print(s.getSequence(0, 100));
+
 
 }
 void p2_question2A()
