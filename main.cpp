@@ -18,17 +18,56 @@
 #define begin -10
 #define end 10
 
-void print(std::vector<std::complex<double>> seq, bool mode=true)
+void print(std::vector<std::complex<double>> seq, bool mode=true, bool polar=false)
 {
-	for(auto valor : seq)
+	long long int k;
+
+	std::cout<<"([";
+	if(polar)
+	{
 		if(mode)
-			std::cout<<std::real(valor)<<" ";
+		{
+
+			for(k=0;k<seq.size()-1;k++)
+			{
+				std::cout<<std::abs(seq.at(k))<<" ,";
+			}
+			std::cout<<std::abs(seq.at(k))<<" ])";
+
+		}
 		else
-			std::cout<<std::imag(valor)<<" ";
+		{
+			for(k=0;k<seq.size()-1;k++)
+			{
+				std::cout<<std::arg(seq.at(k))<<" ,";
+			}
+			std::cout<<std::arg(seq.at(k))<<" ])";
+		}
+	}
+	else
+	{
+		if(mode)
+		{
+			for(k=0;k<seq.size()-1;k++)
+			{
+				std::cout<<std::real(seq.at(k))<<" ,";
+			}
+			std::cout<<std::real(seq.at(k))<<" ])";
+		}
+		else
+		{
+			for(k=0;k<seq.size()-1;k++)
+			{
+				std::cout<<std::imag(seq.at(k))<<" ,";
+			}
+			std::cout<<std::imag(seq.at(k))<<" ])";
+		}
+	}
+
 	std::cout<<std::endl;
 }
 
-void question1A()
+void p1_question1A()
 {
 	std::cout<<"Question 1A"<<std::endl;
 	impulse i;
@@ -38,7 +77,7 @@ void question1A()
 	seq = x.getSequence(begin, end);
 	print(seq);
 }
-void question1B()
+void p1_question1B()
 {
 	std::cout<<"Question 1B"<<std::endl;
 	step d;
@@ -49,7 +88,7 @@ void question1B()
 	seq = x.getSequence(begin, end);
 	print(seq);
 }
-void question1C()
+void p1_question1C()
 {
 	std::cout<<"Question 1C"<<std::endl;
 	cosine	cossenoide(0.05,90.0);
@@ -57,7 +96,7 @@ void question1C()
 	seq = cossenoide.getSequence(1.5*begin,1.5*end);
 	print(seq);
 }
-void question1D()
+void p1_question1D()
 {
 	std::cout<<"Question 1D"<<std::endl;
 	exponential exponencial(std::complex<double> (1/12.0 , M_PI/6.0));
@@ -66,7 +105,7 @@ void question1D()
 	print(seq);
 	print(seq,false);
 }
-void question2A()
+void p1_question2A()
 {
 	std::cout<<"Question 2A"<<std::endl;
 	step d;
@@ -78,7 +117,7 @@ void question2A()
 	seq = y.getSequence(3*begin,3*end);
 	print(seq);
 }
-void question2B()
+void p1_question2B()
 {
 	std::cout<<"Question 2B"<<std::endl;
 	step d;
@@ -90,7 +129,7 @@ void question2B()
 	seq = y.getSequence(3*begin,3*end);
 	print(seq);
 }
-void question3A()
+void p1_question3A()
 {
 	std::cout<<"Question 3A"<<std::endl;
 	powerSeries p(2.0,0.9);
@@ -111,7 +150,7 @@ void question3A()
 
 
 }
-void question4A()
+void p1_question4A()
 {
 	std::cout<<"Question 4A"<<std::endl;
 	std::vector<std::complex<double>> a, b;
@@ -134,15 +173,51 @@ void question4A()
 
 }
 
+void project01()
+{
+	std::cout<<"Projeto 1"<<std::endl;
+	p1_question1A();
+	p1_question1B();
+	p1_question1C();
+	p1_question1D();
+	p1_question2A();
+	p1_question2B();
+	p1_question3A();
+	p1_question4A();
+}
+
+void p2_question1A()
+{
+
+}
+void p2_question1B()
+{
+
+}
+void p2_question2A()
+{
+
+}
+void p2_question2B()
+{
+
+}
+void p2_question3()
+{
+
+}
+
+void project02()
+{
+	p2_question1A();
+	p2_question1B();
+	p2_question2A();
+	p2_question2B();
+	p2_question3();
+}
 
 int main ()
 {
-	question1A();
-	question1B();
-	question1C();
-	question1D();
-	question2A();
-	question2B();
-	question3A();
-	question4A();
+	//project01();
+	project02();
 }
