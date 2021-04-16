@@ -14,8 +14,8 @@ class exponential : public signal
 		exponential(exponential &&toMove) noexcept;
 		exponential& operator=(exponential &&toMove) noexcept;
 		std::complex<double> get(long long int n);
-	const std::complex<double>& getC() const;
-	void setC(const std::complex<double> &c);
+		const std::complex<double>& getC() const;
+		void setC(const std::complex<double> &c);
 
 	private:
 		std::complex<double> c;
