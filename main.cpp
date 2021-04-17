@@ -112,7 +112,7 @@ void p1_question2A()
 	std::cout<<"Question 2A"<<std::endl;
 	step d;
 	delay	d8(8,&d), d4(4,&d);
-	scalar nd8(-1,&d8),nd4(-1,&d4);
+	scalar nd8(-1.0,&d8),nd4(-1.0,&d4);
 	sum x(&d,&nd8),h(&d,&nd4);
 	convolution y(30,&x,&h);
 	std::vector<std::complex<double>> seq;
@@ -124,7 +124,7 @@ void p1_question2B()
 	std::cout<<"Question 2B"<<std::endl;
 	step d;
 	delay	dn1(-1,&d),d2(2,&d), d4(4,&d);
-	scalar nd2(-1,&d2),nd4(-1,&d4);
+	scalar nd2(-1.0,&d2),nd4(-1.0,&d4);
 	sum x(&dn1,&nd2),h(&d,&nd4);
 	convolution y(30,&x,&h);
 	std::vector<std::complex<double>> seq;
@@ -275,13 +275,23 @@ void p2_question2A()
 	print(yF.getFourierSampling(1000),false);
 
 }
-void p2_question2B()
-{
-
-}
 void p2_question3()
 {
-
+	std::cout<<"Question 3"<<std::endl;
+	step u;
+	delay u5(5,&u);
+	scalar nu5(-1.0,&u5);
+	sum quad(&u,&nu5);
+	scalar x(5.0,&quad);
+	fourierTransformation xF(100,&x);
+	std::cout<<"Signal Filtered Fourier Transformation Magnitude"<<std::endl;
+	print(xF.getFourierSampling(1000),true,true);
+	std::cout<<"Signal Filtered Fourier Transformation Phase"<<std::endl;
+	print(xF.getFourierSampling(1000),false,true);
+	std::cout<<"Signal Filtered Fourier Transformation Real"<<std::endl;
+	print(xF.getFourierSampling(1000));
+	std::cout<<"Signal Filtered Fourier Transformation Imaginary"<<std::endl;
+	print(xF.getFourierSampling(1000),false);
 }
 
 void project02()
@@ -289,7 +299,6 @@ void project02()
 	p2_question1A();
 	p2_question1B();
 	p2_question2A();
-	p2_question2B();
 	p2_question3();
 }
 
