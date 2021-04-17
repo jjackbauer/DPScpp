@@ -3,10 +3,8 @@ fourierTransformation::fourierTransformation(long long int k,signal *x)
 {
 	setK(k);
 	setSeq(x->getSequence(0, getK()));
-
-
 }
-std::vector<std::complex<double>> fourierTransformation::getInverseSampling(long long int N)
+std::vector<std::complex<double>> fourierTransformation::getFourierSampling(long long int N)
 {
 	std::vector<std::complex<double>> out;
 
@@ -15,7 +13,7 @@ std::vector<std::complex<double>> fourierTransformation::getInverseSampling(long
 
 		for(long long int i=0; i< getK(); i++)
 		{
-			std::complex<double> wn(0,2*M_PI*n/N*i);
+			std::complex<double> wn(0,2*M_PI*((double)n/N)*i);
 			out[n]+=seq[i]*exp(wn);
 		}
 	}

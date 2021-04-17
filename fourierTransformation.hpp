@@ -13,7 +13,7 @@ class fourierTransformation : public signal
 		fourierTransformation& operator=(fourierTransformation &&toMove) noexcept;
 		~fourierTransformation();
 		std::complex<double>	get(long long int n);
-		std::vector<std::complex<double>> getInverseSampling(long long int samples);
+		std::vector<std::complex<double>> getFourierSampling(long long int samples);
 		long long int getK() const;
 		void setK(long long int k);
 		const std::vector<std::complex<double> >& getSeq() const;

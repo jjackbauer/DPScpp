@@ -13,6 +13,7 @@
 #include "powerSeries.hpp"
 #include "differenceEquation.hpp"
 #include "noise.hpp"
+#include "fourierTransformation.hpp"
 #include <iostream>
 #include <complex>
 #define begin -10
@@ -200,6 +201,16 @@ void p2_question1A()
 	seq = f.getSequence(0, 100);
 	std::cout<<"Filtered Signal"<<std::endl;
 	print(seq);
+	fourierTransformation ytF(100,&yt), fF(100,&f);
+	std::cout<<"Unfiltered Signal Fourier Transformation Magnitude"<<std::endl;
+	print(ytF.getFourierSampling(1000));
+	std::cout<<"Unfiltered Signal Fourier Transformation Phase"<<std::endl;
+	print(ytF.getFourierSampling(1000),false);
+	std::cout<<"Filtered Signal Fourier Transformation Magnitude"<<std::endl;
+	print(fF.getFourierSampling(1000));
+	std::cout<<"Filtered Signal Fourier Transformation Phase"<<std::endl;
+	print(fF.getFourierSampling(1000),false);
+
 }
 void p2_question1B()
 {
@@ -224,8 +235,15 @@ void p2_question1B()
 	convolution s(100,&yt,&h);
 	std::cout<<"Signal Filtered"<<std::endl;
 	print(s.getSequence(0, 100));
-
-
+	fourierTransformation ytF(100,&yt), sF(100,&s);
+	std::cout<<"Unfiltered Signal Fourier Transformation Magnitude"<<std::endl;
+	print(ytF.getFourierSampling(1000));
+	std::cout<<"Unfiltered Signal Fourier Transformation Phase"<<std::endl;
+	print(ytF.getFourierSampling(1000),false);
+	std::cout<<"Signal Filtered Fourier Transformation Magnitude"<<std::endl;
+	print(sF.getFourierSampling(1000));
+	std::cout<<"Signal Filtered Fourier Transformation Phase"<<std::endl;
+	print(sF.getFourierSampling(1000),false);
 }
 void p2_question2A()
 {
