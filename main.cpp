@@ -14,6 +14,7 @@
 #include "differenceEquation.hpp"
 #include "noise.hpp"
 #include "fourierTransformation.hpp"
+#include "product.hpp"
 #include <iostream>
 #include <complex>
 #define begin -10
@@ -210,7 +211,6 @@ void p2_question1A()
 	print(fF.getFourierSampling(1000));
 	std::cout<<"Filtered Signal Fourier Transformation Phase"<<std::endl;
 	print(fF.getFourierSampling(1000),false);
-
 }
 void p2_question1B()
 {
@@ -247,6 +247,32 @@ void p2_question1B()
 }
 void p2_question2A()
 {
+	std::cout<<"Question 2A"<<std::endl;
+	step u;
+	impulse i;
+	std::vector<std::complex<double>> seq;
+	cosine x1(0.1/(2*M_PI),0),x2(0.4/(2*M_PI),0);
+	product x1u(&x1,&u),x2u(&x2,&u);
+	sum x(&x1u,&x2u);
+	std::cout<<"Signal Unfiltered"<<std::endl;
+	print(x.getSequence(0, 100));
+	fourierTransformation xF(100,&x);
+	std::cout<<"Signal Unfiltered Fourier Transformation Magnitude"<<std::endl;
+	print(xF.getFourierSampling(1000));
+	std::cout<<"Signal Unfiltered Fourier Transformation Phase"<<std::endl;
+	print(xF.getFourierSampling(1000),false);
+	delay i1(1,&i),i2(2,&i);
+	scalar p1(-6.76,&i),p2(13.46,&i1),p3(-6.76,&i2);
+	sum aux(&p1,&p2),h(&aux,&p3);
+	convolution y(100,&x,&h);
+	seq=y.getSequence(0, 100);
+	std::cout<<"Signal Filtered"<<std::endl;
+	print(seq);
+	fourierTransformation yF(100,&y);
+	std::cout<<"Signal Filtered Fourier Transformation Magnitude"<<std::endl;
+	print(yF.getFourierSampling(1000));
+	std::cout<<"Signal Filtered Fourier Transformation Phase"<<std::endl;
+	print(yF.getFourierSampling(1000),false);
 
 }
 void p2_question2B()
