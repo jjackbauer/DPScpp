@@ -8,6 +8,7 @@ class sequence : public signal
 	public:
 		sequence();
 		sequence(long long int lowerLimit,long long int upperLimit,signal *x);
+		sequence(long long int lowerLimit,long long int upperLimit,std::vector<std::complex<double>> seq);
 		sequence(const sequence &toCopy) noexcept;
 		sequence& operator=(const sequence &toCopy) noexcept;
 		sequence(sequence &&toMove) noexcept;

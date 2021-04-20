@@ -15,6 +15,15 @@ sequence::sequence(long long int lowerLimit,long long int upperLimit,signal *x)
 
 	setS(aux);
 }
+sequence::sequence(long long int lowerLimit,long long int upperLimit,std::vector<std::complex<double>> seq)
+{
+	if(seq.size() == upperLimit-lowerLimit+1)
+	{
+		setLowerLimit(lowerLimit);
+		setUpperLimit(upperLimit);
+		setS(seq);
+	}
+}
 sequence::sequence(const sequence &toCopy) noexcept : lowerLimit{toCopy.getLowerLimit()}, upperLimit{toCopy.getUpperLimit()}, seq{toCopy.getS()}
 {
 
